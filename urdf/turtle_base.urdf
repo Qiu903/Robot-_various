@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot name="turtle_robot">
+
+  <!-- 1. 底盘连杆 -->
+  <link name="base_link">
+    <!-- 视觉属性：圆形底盘 -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <!-- 圆柱体：半径0.3m，高度0.1m -->
+        <cylinder radius="0.3" length="0.1"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.2 0.4 0.8 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- 2. 摄像头连杆 -->
+  <link name="camera_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <!-- 长方体：长0.08m，宽0.05m，高0.05m -->
+        <box size="0.08 0.05 0.05"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.1 0.1 0.1 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- 3. 固定关节：把摄像头装在底盘正前方0.2m处 -->
+  <joint name="base_camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+    <!-- 子坐标系相对于父坐标系的偏移：x正方向0.2m，无旋转 -->
+    <origin xyz="0.2 0 0.05" rpy="0 0 0"/>
+  </joint>
+
+</robot>
