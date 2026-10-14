@@ -12,6 +12,8 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', glob('launch/*.launch.py')),
+        ('share/' + package_name + '/urdf', glob('urdf/*')),
+        ('share/' + package_name + '/rviz', glob('rviz/*.rviz')),
 
     ],
     install_requires=['setuptools'],
@@ -27,6 +29,9 @@ setup(
             'closed_loop_square = my_robot_control.closed_loop_square:main',
             'pose_subscriber = my_robot_control.pose_subscriber:main',
             'closed_loop_square_full = my_robot_control.closed_loop_square_full:main',
+            'circle_drive = my_robot_control.circle_drive:main',
+            'add_server = my_robot_control.MY_control:main',
+            'gazebo_square = my_robot_control.gazebo_square:main',
         ],
     },
 )

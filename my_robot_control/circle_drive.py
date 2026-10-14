@@ -1,5 +1,4 @@
 import rclpy
-import time
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 
@@ -10,7 +9,6 @@ class Circle_Drive(Node):
         self.timer=self.create_timer(0.1,self.timer_callback)
 
     def timer_callback(self):
-        time.sleep(2)
         msg =Twist()
         msg.linear.x=3.0
         msg.angular.z=3.0
@@ -22,6 +20,7 @@ def main(args=None):
         rclpy.init(args=args)
         node=Circle_Drive()
         rclpy.spin(node)
+        node.destroy_node()
         rclpy.shutdown()
 
 if __name__ == "__main__":
